@@ -29,11 +29,13 @@ function App() {
   const getParticipants = async () => {
     try {
       const participantList = await getAllParticipants();
-      setParticipants(participantList);
+      const names = participantList.map((p: { name: string }) => p.name); 
+      setParticipants(names);
     } catch (err) {
       setError('Failed to fetch participants. Please try again.');
-    } 
-  }
+    }
+  };
+  
 
   const selectTeaMaker = async () => {
     setLoading(true);
